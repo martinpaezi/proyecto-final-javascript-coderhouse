@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.header {
+  background-color: dodgerblue;
+  width: 100%;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main, .aside {
+  padding: 2rem 2rem 0rem 2rem;
+  background-color: rgb(194, 223, 248);
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0rem;
+}
+
+.card-jugador {
+  padding: 0.5rem;
+  border: 1px solid #4e5aa0;
+  background-color: rgb(48, 128, 128);
+  width: 200px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boton-contratar {
+  background-color: chartreuse;
+  padding: 0.2rem;
+  border: 2px solid rgb(120, 238, 3);
+}
+
+.boton-despedir {
+  background-color: red;
+  padding: 0.2rem;
+  color: antiquewhite;
+  border: 2px solid rgb(104, 30, 30);
+}
+
+.presupuesto {
+  padding: 1rem 0rem 2rem;
+}
