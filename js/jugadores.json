@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "nombre": "Verón",
+    "posicion": "Mediocampista",
+    "precio": 25,
+    "contratado": false
+  },
+  {
+    "id": 2,
+    "nombre": "Zidane",
+    "posicion": "Mediocampista",
+    "precio": 25,
+    "contratado": false
+  },
+  {
+    "id": 3,
+    "nombre": "Casillas",
+    "posicion": "Arquero",
+    "precio": 15,
+    "contratado": false
+  },
+  {
+    "id": 4,
+    "nombre": "Robben",
+    "posicion": "Delantero",
+    "precio": 20,
+    "contratado": false
+  },
+  {
+    "id": 5,
+    "nombre": "Zanetti",
+    "posicion": "Defensor",
+    "precio": 15,
+    "contratado": false
+  },
+  {
+    "id": 6,
+    "nombre": "Pirlo",
+    "posicion": "Mediocampista",
+    "precio": 15,
+    "contratado": false
+  },
+  {
+    "id": 7,
+    "nombre": "Messi",
+    "posicion": "Delantero",
+    "precio": 30,
+    "contratado": false
+  },
+  {
+    "id": 8,
+    "nombre": "Ronaldo",
+    "posicion": "Delantero",
+    "precio": 30,
+    "contratado": false
+  },
+  {
+    "id": 9,
+    "nombre": "Xavi",
+    "posicion": "Mediocampista",
+    "precio": 20,
+    "contratado": false
+  },
+  {
+    "id": 10,
+    "nombre": "Henry",
+    "posicion": "Delantero",
+    "precio": 25,
+    "contratado": false
+  },
+  {
+    "id": 11,
+    "nombre": "Neymar",
+    "posicion": "Delantero",
+    "precio": 30,
+    "contratado": false
+  },
+  {
+    "id": 12,
+    "nombre": "Ibrahimovic",
+    "posicion": "Delantero",
+    "precio": 20,
+    "contratado": false
+  },
+  {
+    "id": 13,
+    "nombre": "Neuer",
+    "posicion": "Arquero",
+    "precio": 15,
+    "contratado": false
+  }
+]

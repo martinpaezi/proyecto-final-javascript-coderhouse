@@ -1,96 +1,11 @@
-const jugadores = [
-  {
-    id: 1,
-    nombre: "Verón",
-    posicion: "Mediocampista",
-    precio: 25,
-    contratado: false,
-  },
-  {
-    id: 2,
-    nombre: "Zidane",
-    posicion: "Mediocampista",
-    precio: 25,
-    contratado: false,
-  },
-  {
-    id: 3,
-    nombre: "Casillas",
-    posicion: "Arquero",
-    precio: 15,
-    contratado: false,
-  },
-  {
-    id: 4,
-    nombre: "Robben",
-    posicion: "Delantero",
-    precio: 20,
-    contratado: false,
-  },
-  {
-    id: 5,
-    nombre: "Zanetti",
-    posicion: "Defensor",
-    precio: 15,
-    contratado: false,
-  },
-  {
-    id: 6,
-    nombre: "Pirlo",
-    posicion: "Mediocampista",
-    precio: 15,
-    contratado: false,
-  },
-  {
-    id: 7,
-    nombre: "Messi",
-    posicion: "Delantero",
-    precio: 30,
-    contratado: false,
-  },
-  {
-    id: 8,
-    nombre: "Ronaldo",
-    posicion: "Delantero",
-    precio: 30,
-    contratado: false,
-  },
-  {
-    id: 9,
-    nombre: "Xavi",
-    posicion: "Mediocampista",
-    precio: 20,
-    contratado: false,
-  },
-  {
-    id: 10,
-    nombre: "Henry",
-    posicion: "Delantero",
-    precio: 25,
-    contratado: false,
-  },
-  {
-    id: 11,
-    nombre: "Neymar",
-    posicion: "Delantero",
-    precio: 30,
-    contratado: false,
-  },
-  {
-    id: 12,
-    nombre: "Ibrahimovic",
-    posicion: "Delantero",
-    precio: 20,
-    contratado: false,
-  },
-  {
-    id: 13,
-    nombre: "Neuer",
-    posicion: "Arquero",
-    precio: 15,
-    contratado: false,
-  },
-];
+let jugadores = [];
+
+fetch("./js/jugadores.json")
+  .then(response => response.json())
+  .then(data => {
+    jugadores = data;
+    cargarJugadores(jugadores)
+  })
 
 const jugadoresNoElegidos = document.getElementById("jugadoresNoElegidos");
 const jugadoresElegidos = document.getElementById("jugadoresElegidos");
@@ -143,18 +58,59 @@ function contratarJugador(jugador) {
     jugadoresGuardados.push(jugador);
     guardarJugadoresEnLocalStorage();
     cargarJugadores();
+    Toastify({
+      text: `¡Contrataste a ${jugador.nombre}!`,
+      duration: 3000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "linear-gradient(to left, #308080, #4e5aa0)",
+      },
+      onClick: function(){}
+    }).showToast();
   }
 }
 
 function despedirJugador(jugador) {
-  const idJugador = jugador.id;
-  const index = jugadoresGuardados.findIndex((jugador) => jugador.id === idJugador);
+  Swal.fire({
+    title: `¿Querés despedir a ${jugador.nombre}?`,
+    showDenyButton: true,
+    confirmButtonText: "Sí",
+    denyButtonText: `No`
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const idJugador = jugador.id;
+      const index = jugadoresGuardados.findIndex((jugador) => jugador.id === idJugador);
+      jugador.contratado = false;
+    
+      if (index !== -1) {
+        jugadoresGuardados.splice(index, 1);
+        guardarJugadoresEnLocalStorage();
+      }
+    
+       Toastify({
+         text: `¡Despediste a ${jugador.nombre}!`,
+         duration: 3000,
+         destination: "https://github.com/apvarun/toastify-js",
+         newWindow: true,
+         close: true,
+         gravity: "top",
+         position: "right",
+         stopOnFocus: true,
+         style: {
+           background: "linear-gradient(to right, red, #4e5aa0)",
+         },
+         onClick: function(){}
+       }).showToast();
+    
+       cargarJugadores();
+    }
+  });
 
-  if (index !== -1) {
-    jugadoresGuardados.splice(index, 1);
-    guardarJugadoresEnLocalStorage();
-  }
-  cargarJugadores();
 }
 
 function guardarJugadoresEnLocalStorage() {
@@ -165,5 +121,3 @@ function actualizarPresupuesto() {
   const totalGastado = jugadoresGuardados.reduce((acc, jugador) => acc + jugador.precio, 0);
   presupuesto.textContent = `Presupuesto gastado: $${totalGastado}M`;
 }
-
-cargarJugadores();
